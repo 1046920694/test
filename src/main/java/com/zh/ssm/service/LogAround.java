@@ -9,7 +9,7 @@ public class LogAround implements MethodInterceptor {
     private Logger logger=Logger.getLogger(this.getClass().getName());
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        logger.info("执行输出日志");
+        logger.info("执行输出日志1");
        Object result= invocation.proceed();
         return result;
     }
