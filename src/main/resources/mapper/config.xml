@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+      <bean id="log" class="com.zh.ssm.service.LogAround"></bean>
+    <bean id="time" class="com.zh.ssm.service.impl.TimeIMPL"></bean>
+    <bean id="logProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>com.zh.ssm.service.Timer</value>
+        </property>
+        <property name="target">
+            <ref bean="time"></ref>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>log</value>
+            </list>
+        </property>
+    </bean>
+    
+</beans>
